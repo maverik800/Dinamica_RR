@@ -1,0 +1,2 @@
+1) Fai il run di Initialization.m, scegli se farlo partire direttamente in traiettoria o in una condizione diversa
+2) Fai il run del Simulink

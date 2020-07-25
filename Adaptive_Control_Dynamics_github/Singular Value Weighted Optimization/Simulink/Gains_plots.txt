@@ -1,0 +1,31 @@
+On trajectory:
+
+10%
+
+Kd = 3
+Kp = 5
+R = 35
+lamda = 12
+
+40%
+
+Kd = 3
+Kp = 3
+R = 35
+lamda = 12
+
+Off trajectory 
+
+10%
+
+Kd = 3
+Kp = 5
+R = 40
+lamda = 12
+
+40%
+
+Kd = 1
+Kp = 3
+R = 40
+lamda = 12

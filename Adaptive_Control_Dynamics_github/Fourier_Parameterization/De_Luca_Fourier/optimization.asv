@@ -1,0 +1,44 @@
+%% Optimization of trajectory using FMINCON
+
+clear all; close all; clc;
+addpath('../Regressor')
+
+% REMEMBER THE PARAMETRIZATION USED IN YtY_computation for the trajectory
+
+% Define integration window
+T = 20;
+
+% Initial guess for x =  [a_1 a_2 b_1 b_2 q0_1 q0_2 wf]
+x0 = [0.2 -0.02 -0.4 0.15 0.01 0.8*pi];
+
+% Defining the cost function
+fun = @(x)cost_function(x,T);
+
+% There are no linear constraints
+A = [];
+b = [];
+Aeq = [];
+beq = [];
+
+% Bounds on x = [a1, a2, w1,w2] - depend on chosen parametrization and
+% considered robot
+% lb = [0.1 0.1 0.1 0.1 0.1 0.1];
+lb = [-2 -2 -2 -2 -6.28 -6.28 0.1*pi];
+ub = [ 2  2  2  2  6.28  6.28   2*pi];
+
+% No nonlinear constraints (it might be possible to insert here constraints
+% on inverse kinematics, not sure)
+nonlcon = [];
+
+% Optimization Options
+% options = optimoptions('fmincon','OptimalityTolerance',1e-6);
+options = optimoptions('fmincon');
+
+% Optimization Execution
+disp('Started minimization.');
+tic
+[x,fval,exitflag,output] = fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options)
+toc
+disp('Finished minimization.');
+
+% I found x = [4.5734, 9.9722, 3.2735, 4.4680] with f = -det(G) = -1.8e9

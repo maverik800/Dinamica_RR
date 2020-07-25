@@ -1,0 +1,129 @@
+%% Adaptive Dynamic fmincon Optimization %%%
+
+% CASE I ( Maximization of determinant of Gramian == min(-fun))
+
+% Initial Guess
+
+Cost function = determinant of Gramian
+
+x0 = [10 10 10 10 0.15 0.2 0.8*pi];
+
+x* = [10.1504 10.0168 10.0454 9.9557 0.1498 0.2001 2.5151]
+
+Bounds
+
+lb = [0.1 0.1 0.1 0.1  0     0      0.1*pi];
+ub = [20  20  20  20   6.28  6.28   2*pi];
+
+
+
+exitflag =
+
+     -3
+
+fval =
+
+     -2.4226e+22
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% CASE II ( Maximization of determinant of Gramian == min(-fun))
+
+% Initial Guess
+
+Cost function = determinant of Gramian
+
+x0 = [11.3 7.2 4 2.9 0.6 0.3 0.5*pi];
+
+x* = [1.8279    0.2828    1.1570    2.4889    0.0213    0.2962    5.1656]
+
+Bounds
+lb = [0.1 0.1 0.1 0.1  0     0      0.1*pi];
+ub = [30  30  30  30   6.28  6.28   2*pi];
+
+
+
+
+
+Computing Gramian by integrating.
+Getting determinant of Gramian.
+[  890175.0, 1779550.0,  889370.0,  2881010.0,  3523000.0,  1532170.0]
+[ 1779550.0, 3558300.0, 1778750.0,  5708600.0,  6993390.0,  3064340.0]
+[  889370.0, 1778750.0,  889380.0,  2827590.0,  3470390.0,  1532180.0]
+[ 2881010.0, 5708600.0, 2827590.0, 4.28123e+8, 4.35634e+8, 1.03917e+7]
+[ 3523000.0, 6993390.0, 3470390.0, 4.35634e+8, 4.47697e+8, 1.55857e+7]
+[ 1532170.0, 3064340.0, 1532180.0, 1.03917e+7, 1.55857e+7,  6726220.0]
+ 
+2297455265302492.1042525351669108
+ 
+Getting smallest eigenvalue of Gramian.
+  -2.2975e+15
+
+Computing Gramian by integrating.
+Getting determinant of Gramian.
+[  890175.0, 1779550.0,  889370.0,  2881010.0,  3523000.0,  1532170.0]
+[ 1779550.0, 3558300.0, 1778750.0,  5708600.0,  6993390.0,  3064340.0]
+[  889370.0, 1778750.0,  889380.0,  2827590.0,  3470390.0,  1532180.0]
+[ 2881010.0, 5708600.0, 2827590.0, 4.28123e+8, 4.35634e+8, 1.03917e+7]
+[ 3523000.0, 6993390.0, 3470390.0, 4.35634e+8, 4.47697e+8, 1.55857e+7]
+[ 1532170.0, 3064340.0, 1532180.0, 1.03917e+7, 1.55857e+7,  6726220.0]
+ 
+2297440871491881.7968637639316912
+ 
+Getting smallest eigenvalue of Gramian.
+  -2.2974e+15
+
+Computing Gramian by integrating.
+Getting determinant of Gramian.
+[  890175.0, 1779550.0,  889370.0,  2881010.0,  3523000.0,  1532170.0]
+[ 1779550.0, 3558300.0, 1778750.0,  5708600.0,  6993390.0,  3064340.0]
+[  889370.0, 1778750.0,  889380.0,  2827590.0,  3470390.0,  1532180.0]
+[ 2881010.0, 5708600.0, 2827590.0, 4.28123e+8, 4.35634e+8, 1.03917e+7]
+[ 3523000.0, 6993390.0, 3470390.0, 4.35634e+8, 4.47697e+8, 1.55857e+7]
+[ 1532170.0, 3064340.0, 1532180.0, 1.03917e+7, 1.55857e+7,  6726220.0]
+ 
+2297392363375912.6124113213456233
+ 
+Getting smallest eigenvalue of Gramian.
+  -2.2974e+15
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    1.8279    0.2828    1.1570    2.4889    0.0213    0.2962    5.1656
+
+
+fval =
+
+  -2.2977e+15
+
+
+exitflag =
+
+     2
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 13
+          funcCount: 186
+    constrviolation: 0
+           stepsize: 7.6965e-11
+          algorithm: 'interior-point'
+      firstorderopt: 9.3528e+18
+       cgiterations: 87
+            message: '↵Local minimum possible. Constraints satisfied.↵↵fmincon stopped because the size of the current step is less than↵the value of the step size tolerance and constraints are ↵satisfied to within the value of the constraint tolerance.↵↵<stopping criteria details>↵↵Optimization stopped because the relative changes in all elements of x are↵less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint↵violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.↵↵'
+
+Elapsed time is 7078.377437 seconds ------>> circa 117 minuti
+Finished minimization.

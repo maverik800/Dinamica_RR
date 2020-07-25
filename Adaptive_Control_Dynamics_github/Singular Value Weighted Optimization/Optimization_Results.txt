@@ -1,0 +1,126 @@
+Optimization Type 2:
+
+First Trial:
+
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+
+x =
+    6.2832    6.1964    6.1919    6.2832    6.2832    0.1000    0.1000
+fval =
+  -5.1733e+11
+exitflag =
+     2
+output = 
+  struct with fields:
+
+         iterations: 14
+          funcCount: 122
+    constrviolation: 0
+           stepsize: 7.1287e-10
+          algorithm: 'interior-point'
+      firstorderopt: 3.6810e+07
+       cgiterations: 1
+            message: '↵Local minimum possible. Constraints satisfied.↵↵fmincon stopped because the size of the current step is less than↵the value of the step size tolerance and constraints are ↵satisfied to within the value of the constraint tolerance.↵↵<stopping criteria details>↵↵Optimization stopped because the relative changes in all elements of x are↵less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint↵violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.↵↵'
+Elapsed time is 1244.787492 seconds.
+Finished minimization.
+
+Second Trial:
+
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+ub = [pi, pi, pi, pi, pi, pi, pi];
+
+x =
+    3.1416    3.1416    3.1416    3.1416    1.5962    3.1416    2.0245
+fval =
+  -8.7374e+09
+exitflag =
+     1
+output = 
+  struct with fields:
+
+         iterations: 15
+          funcCount: 136
+    constrviolation: 0
+           stepsize: 1.6654e-08
+          algorithm: 'interior-point'
+      firstorderopt: 5.0065e+03
+       cgiterations: 5
+            message: '↵Local minimum found that satisfies the constraints.↵↵Optimization completed because the objective function is non-decreasing in ↵feasible directions, to within the value of the optimality tolerance,↵and constraints are satisfied to within the value of the constraint tolerance.↵↵<stopping criteria details>↵↵Optimization completed: The relative first-order optimality measure, 7.281970e-07,↵is less than options.OptimalityTolerance = 1.000000e-06, and the relative maximum constraint↵violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.↵↵'
+Elapsed time is 1245.952108 seconds.
+Finished minimization.
+
+Third Trial:
+
+lb = [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8];
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+
+x =
+    6.2832    6.2832    6.2832    6.2832    6.2832    6.2829    6.2832
+fval =
+  -1.0877e+13
+exitflag =
+     2
+output = 
+  struct with fields:
+
+         iterations: 14
+          funcCount: 140
+    constrviolation: 0
+           stepsize: 4.5772e-10
+          algorithm: 'interior-point'
+      firstorderopt: 6.6990e+17
+       cgiterations: 32
+            message: '↵Local minimum possible. Constraints satisfied.↵↵fmincon stopped because the size of the current step is less than↵the value of the step size tolerance and constraints are ↵satisfied to within the value of the constraint tolerance.↵↵<stopping criteria details>↵↵Optimization stopped because the relative changes in all elements of x are↵less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint↵violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.↵↵'
+Elapsed time is 2894.028720 seconds.
+Finished minimization.
+
+Forth Trial:
+
+lb = [0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4];
+ub = [1.5*pi, 1.5*pi, 1.5*pi, 1.5*pi, 1.5*pi, 1.5*pi, 1.5*pi];
+
+x =
+    4.7124    4.7124    4.7124    4.7124    1.4478    0.4000    4.7124
+fval =
+  -1.3941e+12
+exitflag =
+     1
+output = 
+  struct with fields:
+
+         iterations: 8
+          funcCount: 74
+    constrviolation: 0
+           stepsize: 7.0592e-06
+          algorithm: 'interior-point'
+      firstorderopt: 1.3327e+05
+       cgiterations: 1
+            message: '↵Local minimum found that satisfies the constraints.↵↵Optimization completed because the objective function is non-decreasing in ↵feasible directions, to within the value of the optimality tolerance,↵and constraints are satisfied to within the value of the constraint tolerance.↵↵<stopping criteria details>↵↵Optimization completed: The relative first-order optimality measure, 8.420618e-08,↵is less than options.OptimalityTolerance = 1.000000e-06, and the relative maximum constraint↵violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.↵↵'
+Elapsed time is 1107.394449 seconds.
+Finished minimization.
+
+Fifth Trial:
+
+lb = [1, 1, 1, 1, 1, 1, 1];
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+
+x =
+    6.2832    6.2832    6.2832    6.2832    6.2832    1.0000    6.2832
+fval =
+  -9.7452e+12
+exitflag =
+     2
+output = 
+  struct with fields:
+
+         iterations: 22
+          funcCount: 212
+    constrviolation: 0
+           stepsize: 6.1093e-10
+          algorithm: 'interior-point'
+      firstorderopt: 2.7583e+15
+       cgiterations: 44
+            message: '↵Local minimum possible. Constraints satisfied.↵↵fmincon stopped because the size of the current step is less than↵the value of the step size tolerance and constraints are ↵satisfied to within the value of the constraint tolerance.↵↵<stopping criteria details>↵↵Optimization stopped because the relative changes in all elements of x are↵less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint↵violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.↵↵'
+Elapsed time is 4262.193669 seconds.
+Finished minimization.
