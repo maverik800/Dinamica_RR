@@ -19,4 +19,8 @@ S = svd(G);
 f = double(-S.'*W*S);
 disp('f = -S^T*W*S ='); disp(f);
 
+% Testing the Ker of the Gramian
+ker = rank(null(G));
+disp('The Ker of the Gramian is : '); disp(ker);
+
 end

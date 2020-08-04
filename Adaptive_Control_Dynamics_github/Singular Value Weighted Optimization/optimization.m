@@ -24,14 +24,14 @@ beq = [];
 % lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
 
 lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
-ub = [2*pi,2*pi,2*pi,2*pi,2*pi,2*pi,2*pi];
+ub = [pi,pi,pi,pi,pi,pi,pi];
 
 % Initial guess for x =  [a_11 a_12  b_11 b_12 q0_1 q0_2]
 % Initial guess can be more random between bounds using rand()
 % x0 = [68.5109, 9.3304, 87.2706, 94.2995, 9.7498, 84.6037, 90.9486] % This
 % is a good initial guess
 % x0 = lb + (ub - lb).*rand([1,7]);
-x0 = [3 3 3 3 3 3 3];
+x0 = [1 2 3 1 2 3 1];
 
 disp('x0 = '); disp(x0);
 
