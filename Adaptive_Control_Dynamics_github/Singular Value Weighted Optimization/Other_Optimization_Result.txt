@@ -1,0 +1,806 @@
+%% Method 2 : Singular Value Weighted Optimization
+
+ FOURIER FIRST HARMONIC
+%Case I
+
+x0 = 
+    5.1376    5.7007    0.8852    5.7476    4.0100    0.7031    1.8220
+
+
+Computing Gramian by integrating.
+G =
+[ 961.489, 962.769,  1.28071,  14440.7,  13481.7, 2.54212]
+[ 962.769, 968.637,  5.86731,  14433.4,  13482.4, 11.6948]
+[ 1.28071, 5.86731,  4.58661, -7.24005, 0.631935, 9.15269]
+[ 14440.7, 14433.4, -7.24005, 373130.0, 358701.0, 12.1474]
+[ 13481.7, 13482.4, 0.631935, 358701.0, 345265.0, 46.1384]
+[ 2.54212, 11.6948,  9.15269,  12.1474,  46.1384, 36.5332]
+ 
+eig(G) =
+                  719256.54419764954619782642153821
+                  1047.4555743435577263512855593081
+                   59.01154938339841796594849020459
+                  3.1094637879300297147753778887683
+ -0.00000000000000020353857669760700681644983891726
+      -0.000000000051146117225957838185941547481985
+ 
+f = -S^T*W*S =
+  -5.1733e+11
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    6.2832    6.1964    6.1919    6.2832    6.2832    0.1000    0.1000
+
+
+fval =
+
+  -5.1733e+11
+
+
+exitflag =
+
+     2
+
+%% BOUNDS
+
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+
+%% WEIGHTS
+W = eye(6); W(5,5) = 1e12; W(6,6) = 1e18;
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CASE II HO variato i pesi della matrice W
+
+
+Computing Gramian by integrating.
+G =
+[  26710.5,  49096.9, 22386.4,  93205.3,  110732.0,  44237.6]
+[  49096.9,  90487.0, 41390.1, 176357.0,  209051.0,  81790.9]
+[  22386.4,  41390.1, 19003.7,  83151.6,   98318.5,  37553.4]
+[  93205.3, 176357.0, 83151.6, 725392.0,  865132.0, 232945.0]
+[ 110732.0, 209051.0, 98318.5, 865132.0, 1091560.0, 337160.0]
+[  44237.6,  81790.9, 37553.4, 232945.0,  337160.0, 148452.0]
+ 
+eig(G) =
+        1955724.9280888507837018254346202
+        85708.058102902363208322837884887
+        60050.455407610239426674802924307
+        121.16569679705122058476552448224
+  0.0000082311996763375791295077600611145
+ -0.0000045300399786148015055774230523476
+ 
+f = -S^T*W*S =
+  -2.0522e+17
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    6.2555    6.2832    5.9682    5.6412    0.7509    0.9826    5.0462
+
+
+fval =
+
+  -1.1615e+24
+
+
+exitflag =
+
+     2
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 13
+          funcCount: 184
+    constrviolation: 0
+           stepsize: 9.0481e-11
+          algorithm: 'interior-point'
+      firstorderopt: 1.5074e+31
+       cgiterations: 107
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+
+Elapsed time is 4257.501939 seconds.
+Finished minimization.
+
+
+x0 = 
+    0.3208    5.3503    5.8751    4.2967    4.7852    4.6949    2.5252
+
+
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+
+%% WEIGHTS
+W = eye(6);w(4,4) = 1e12; W(5,5) = 1e20; W(6,6) = 1e28;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CASE III
+
+Computing Gramian by integrating.
+G =
+[ 3004.63, 4960.18, 1955.55, 9037.19, 8194.34, 2161.78]
+[ 4960.18, 8786.88, 3826.69, 16239.1, 15510.3, 4231.32]
+[ 1955.55, 3826.69, 1871.14, 7201.93, 7315.91, 2069.53]
+[ 9037.19, 16239.1, 7201.93, 39398.1, 41387.1, 11026.2]
+[ 8194.34, 15510.3, 7315.91, 41387.1, 46651.4, 13458.7]
+[ 2161.78, 4231.32, 2069.53, 11026.2, 13458.7, 4594.21]
+ 
+eig(G) =
+      97461.62295790996612881715503117
+     5183.3550246046377428107365866766
+     1297.0667684761582849995708350552
+     364.29261300089868293288782056666
+  0.0047105003743202368928736644956693
+ -0.0026001640200770925194654599850589
+ 
+f = -S^T*W*S =
+  -6.7609e+34
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    4.5598    0.8488    5.5128    0.2913    0.7733    0.4168    1.9198
+
+
+fval =
+
+  -6.7609e+34
+
+
+exitflag =
+
+     2
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 8
+          funcCount: 114
+    constrviolation: 0
+           stepsize: 1.2439e-10
+          algorithm: 'interior-point'
+      firstorderopt: 1.8364e+42
+       cgiterations: 48
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+
+Elapsed time is 1029.748826 seconds.
+Finished minimization.
+
+BOUNDS:
+
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+
+
+WEIGTHS:
+
+W = eye(6);w(4,4) = 1e20; W(5,5) = 1e30; W(6,6) = 1e40;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CASE IV
+
+
+Computing Gramian by integrating.
+G =
+[ 8514.39, 14732.4, 6217.97,  28824.0,  34412.3,  14102.7]
+[ 14732.4, 25798.9, 11066.5,  52598.8,  62964.8,  25098.4]
+[ 6217.97, 11066.5, 4848.55,  23774.7,  28552.5,  10995.7]
+[ 28824.0, 52598.8, 23774.7, 241816.0, 294095.0,  81103.7]
+[ 34412.3, 62964.8, 28552.5, 294095.0, 377244.0, 117561.0]
+[ 14102.7, 25098.4, 10995.7,  81103.7, 117561.0,  50559.7]
+ 
+eig(G) =
+          663123.77199100167671783738707021
+          26547.331397868269584106715234507
+          18907.280975544300142171738871219
+          202.38888779564366654487308657448
+  0.000000067064762815265548354764427449791
+ -0.000000091956532112881804172458374567552
+ 
+f = -S^T*W*S =
+  -4.4977e+45
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    4.2586    6.2831    3.3362    3.0938    0.6465    1.0485    4.0705
+
+
+fval =
+
+  -4.4981e+45
+
+
+exitflag =
+
+     2
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 9
+          funcCount: 123
+    constrviolation: 0
+           stepsize: 1.2006e-10
+          algorithm: 'interior-point'
+      firstorderopt: 2.4975e+48
+       cgiterations: 53
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+
+Elapsed time is 1582.373975 seconds.
+Finished minimization.
+
+BOUNDS:
+
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+
+WEIGTHS:
+W = eye(6);w(4,4) = 1e20; W(5,5) = 1e50; W(6,6) = 1e60;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CASE V:
+
+Computing Gramian by integrating.
+G =
+[ 3223.49, 5657.49,  2434.0, 2480.95, 3260.33, 4002.87]
+[ 5657.49, 10371.8, 4714.27, 5996.13, 8091.23, 7752.59]
+[  2434.0, 4714.27, 2280.27, 3515.18, 4830.91, 3749.73]
+[ 2480.95, 5996.13, 3515.18, 28645.8, 38846.9, 12682.0]
+[ 3260.33, 8091.23, 4830.91, 38846.9, 56598.9, 21012.4]
+[ 4002.87, 7752.59, 3749.73, 12682.0, 21012.4, 12333.2]
+ 
+eig(G) =
+         94211.045024297221496809725598128
+         15599.717049077475894990224323983
+         3392.0451399698291637792131629396
+          250.6807761254325973138449088052
+  0.00000037120626833848296868815154890398
+ -0.00000061414059495393424980421648699013
+ 
+f = -S^T*W*S =
+  -1.3779e+87
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    4.1623    2.6412    2.8212    1.8779    0.1001    2.2787    3.0152
+
+
+fval =
+
+  -1.3779e+87
+
+
+exitflag =
+
+     2
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 22
+          funcCount: 286
+    constrviolation: 0
+           stepsize: 1.6574e-10
+          algorithm: 'interior-point'
+      firstorderopt: 4.7657e+89
+       cgiterations: 140
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+
+Elapsed time is 4499.425700 seconds.
+Finished minimization.
+
+BOUNDS:
+
+W = eye(6);w(4,4) = 1e20; W(5,5) = 1e70; W(6,6) = 1e100;
+
+WEIGHTS:
+
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CASE VI
+
+Computing Gramian by integrating.
+G =
+[ 15601.7,  33803.4, 18201.7,  59124.4,  60730.6,  17208.0]
+[ 33803.4,  73763.6, 39960.2, 128948.0, 132929.0,  37784.1]
+[ 18201.7,  39960.2, 21758.5,  69824.1,  72198.6,  20576.1]
+[ 59124.4, 128948.0, 69824.1, 319774.0, 375193.0, 114544.0]
+[ 60730.6, 132929.0, 72198.6, 375193.0, 466386.0, 151924.0]
+[ 17208.0,  37784.1, 20576.1, 114544.0, 151924.0,  54587.8]
+ 
+eig(G) =
+           890779.29478746055510307950497768
+           53730.666729668426559542766533382
+           7107.3734976608733169385994300306
+           253.60629002664804615363632032919
+ 0.00000000011166827831883647500467001948344
+   -0.00000037075492297103878788022550640255
+ 
+f = -S^T*W*S =
+  -1.3746e+87
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+   -6.1359   -2.1813   -4.1951    3.9170   -2.2362    0.0503   -6.2728
+
+
+fval =
+
+  -1.3746e+87
+
+
+exitflag =
+
+     2
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 7
+          funcCount: 98
+    constrviolation: 0
+           stepsize: 2.7212e-10
+          algorithm: 'interior-point'
+      firstorderopt: 1.7021e+89
+       cgiterations: 53
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+
+Elapsed time is 1575.464518 seconds.
+Finished minimization.
+
+WEIGTHS:
+
+W = eye(6);w(4,4) = 1e25; W(5,5) = 1e100; W(6,6) = 1e100;
+
+
+BOUNDS:
+
+
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+
+lb = [-2*pi, -2*pi, -2*pi, -2*pi, -2*pi, -2*pi, -2*pi];
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CASE VII
+
+%Initial Guess
+
+x0 = 
+    0.8023    0.1505    0.4275    0.9166    0.7943    0.9599    4.1310
+
+
+Computing Gramian by integrating.
+G =
+[ 1569.25, 2262.16, 692.915, 4131.95, 4008.51, 1445.81]
+[ 2262.16, 3536.06,  1273.9, 7280.22, 7676.12, 2658.07]
+[ 692.915,  1273.9, 580.981, 3148.27, 3667.61, 1212.26]
+[ 4131.95, 7280.22, 3148.27, 23161.4, 29416.0, 10386.5]
+[ 4008.51, 7676.12, 3667.61, 29416.0, 39451.5, 14044.0]
+[ 1445.81, 2658.07, 1212.26, 10386.5, 14044.0, 5103.33]
+ 
+eig(G) =
+                69532.063367422029916394780370275
+                3581.2921745921299197602933663939
+                238.02239139572520222270217294414
+                51.128603062792640963372783095644
+ 0.0000000000000023684767783614054172092109737324
+         -0.0000011593226869112516617524949542651
+ 
+f = -S^T*W*S =
+  -1.3440e+28
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    0.7439    0.9957    0.9583    0.8958    0.8930    1.0000    6.2832
+
+
+fval =
+
+  -1.3440e+28
+
+
+exitflag =
+
+     2
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 23
+          funcCount: 271
+    constrviolation: 0
+           stepsize: 8.8788e-11
+          algorithm: 'interior-point'
+      firstorderopt: 8.7614e+29
+       cgiterations: 96
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+
+Elapsed time is 2952.236046 seconds.
+Finished minimization.
+>> 
+
+
+WEIGTHS:
+
+W = eye(6);w(4,4) = 1e20; W(5,5) = 1e40; W(6,6) = 1e40;
+
+BOUNDS:
+
+ub = [1,1,1,1,1,1 2*pi];
+
+lb = [0.01, 0.01, 0.01, 0.01, 0.01,0.01, 0.01*pi];
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CASE VIII
+
+
+x0 = 
+     3     3     3     3     3     3     3
+
+Computing Gramian by integrating.
+G =
+[ 975.362,  978.52, 3.15758,  17472.8,  16503.7, 6.31515]
+[  978.52, 986.309,  7.7891,  17487.0,  16524.1, 15.5782]
+[ 3.15758,  7.7891, 4.63152,  14.2224,  20.3279, 9.26305]
+[ 17472.8, 17487.0, 14.2224, 389697.0, 372269.0, 44.8044]
+[ 16503.7, 16524.1, 20.3279, 372269.0, 355841.0, 75.5415]
+[ 6.31515, 15.5782, 9.26305,  44.8044,  75.5415, 37.0522]
+ 
+eig(G) =
+                 746975.25001134924464904399781342
+                 503.34544617743553582850955915335
+                 59.811827110894132618857389340097
+                 3.1159259156409431436993714153716
+        0.0000000025401732965595345060644936296655
+ 0.00000000000000044392297411104661809515536009604
+ 
+f = -S^T*W*S =
+  -5.5797e+11
+
+
+Local minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the value of the optimality tolerance,
+and constraints are satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    6.2832    6.2832    6.2832    6.2832    5.5650    3.9837    0.1000
+
+
+fval =
+
+  -5.5797e+11
+
+
+exitflag =
+
+     1
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 21
+          funcCount: 184
+    constrviolation: 0
+           stepsize: 1.4862e-06
+          algorithm: 'interior-point'
+      firstorderopt: 9.7207e+06
+       cgiterations: 9
+            message: '?Local minimum found that satisfies the constraints.??Optimization completed because the objective function is non-decreasing in ?feasible directions, to within the value of the optimality tolerance,?and constraints are satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization completed: The relative first-order optimality measure, 9.046576e-07,?is less than options.OptimalityTolerance = 1.000000e-06, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+
+Elapsed time is 4627.670417 seconds.
+Finished minimization.
+
+
+WEIGTHS:
+
+ W = eye(6); W(5,5) = 1e12; W(6,6) = 1e18;
+
+
+BOUNDS:
+
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+ub = [2*pi,2*pi,2*pi,2*pi,2*pi,2*pi,2*pi];
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CASE IX (Rispetto al caso precedente, ho variato i pesi della matrice W partendo sempre allo stesso guess e considerando gli stessi bounds)
+
+x0 = 
+     3     3     3     3     3     3     3
+
+Computing Gramian by integrating.
+G =
+[ 4564.33, 8236.31, 3671.98, 1964.32, 4351.74, 6951.75]
+[ 8236.31, 15719.8, 7483.44, 3183.26, 9110.76, 14163.8]
+[ 3671.98, 7483.44, 3811.46, 1218.94, 4759.02, 7212.07]
+[ 1964.32, 3183.26, 1218.94, 15154.7, 26452.7, 13262.2]
+[ 4351.74, 9110.76, 4759.02, 26452.7, 55753.7, 33652.8]
+[ 6951.75, 14163.8, 7212.07, 13262.2, 33652.8, 27342.3]
+ 
+eig(G) =
+         94749.584042218258535224925182689
+         23436.550941957544694314932626947
+         3781.2510156426804981281443357367
+         378.97346953737498756277471356147
+  0.00000023560017318381088172606938521882
+ -0.00000011047405352638353604318577091464
+ 
+f = -S^T*W*S =
+  -1.2205e+26
+
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the size of the current step is less than
+the value of the step size tolerance and constraints are 
+satisfied to within the value of the constraint tolerance.
+
+<stopping criteria details>
+
+x =
+
+    2.9972    2.9663    3.6636    3.0326    3.2112    3.0489    4.1442
+
+
+fval =
+
+  -1.2205e+26
+
+
+exitflag =
+
+     2
+
+
+output = 
+
+  struct with fields:
+
+         iterations: 10
+          funcCount: 139
+    constrviolation: 0
+           stepsize: 2.7700e-10
+          algorithm: 'interior-point'
+      firstorderopt: 2.0773e+28
+       cgiterations: 45
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+
+Elapsed time is 2968.897840 seconds.
+Finished minimization.
+
+WEIGHTS:
+
+ W = eye(6); W(5,5) = 1e25; W(6,6) = 1e40;
+
+BOUNDS:
+
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+ub = [2*pi,2*pi,2*pi,2*pi,2*pi,2*pi,2*pi];
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+TEST DANY
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Optimization Type 2:
+
+First Trial:
+
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+
+x =
+    6.2832    6.1964    6.1919    6.2832    6.2832    0.1000    0.1000
+fval =
+  -5.1733e+11
+exitflag =
+     2
+output = 
+  struct with fields:
+
+         iterations: 14
+          funcCount: 122
+    constrviolation: 0
+           stepsize: 7.1287e-10
+          algorithm: 'interior-point'
+      firstorderopt: 3.6810e+07
+       cgiterations: 1
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+Elapsed time is 1244.787492 seconds.
+Finished minimization.
+
+Second Trial:
+
+lb = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1];
+ub = [pi, pi, pi, pi, pi, pi, pi];
+
+x =
+    3.1416    3.1416    3.1416    3.1416    1.5962    3.1416    2.0245
+fval =
+  -8.7374e+09
+exitflag =
+     1
+output = 
+  struct with fields:
+
+         iterations: 15
+          funcCount: 136
+    constrviolation: 0
+           stepsize: 1.6654e-08
+          algorithm: 'interior-point'
+      firstorderopt: 5.0065e+03
+       cgiterations: 5
+            message: '?Local minimum found that satisfies the constraints.??Optimization completed because the objective function is non-decreasing in ?feasible directions, to within the value of the optimality tolerance,?and constraints are satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization completed: The relative first-order optimality measure, 7.281970e-07,?is less than options.OptimalityTolerance = 1.000000e-06, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+Elapsed time is 1245.952108 seconds.
+Finished minimization.
+
+Third Trial:
+
+lb = [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8];
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+
+x =
+    6.2832    6.2832    6.2832    6.2832    6.2832    6.2829    6.2832
+fval =
+  -1.0877e+13
+exitflag =
+     2
+output = 
+  struct with fields:
+
+         iterations: 14
+          funcCount: 140
+    constrviolation: 0
+           stepsize: 4.5772e-10
+          algorithm: 'interior-point'
+      firstorderopt: 6.6990e+17
+       cgiterations: 32
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+Elapsed time is 2894.028720 seconds.
+Finished minimization.
+
+Forth Trial:
+
+lb = [0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4];
+ub = [1.5*pi, 1.5*pi, 1.5*pi, 1.5*pi, 1.5*pi, 1.5*pi, 1.5*pi];
+
+x =
+    4.7124    4.7124    4.7124    4.7124    1.4478    0.4000    4.7124
+fval =
+  -1.3941e+12
+exitflag =
+     1
+output = 
+  struct with fields:
+
+         iterations: 8
+          funcCount: 74
+    constrviolation: 0
+           stepsize: 7.0592e-06
+          algorithm: 'interior-point'
+      firstorderopt: 1.3327e+05
+       cgiterations: 1
+            message: '?Local minimum found that satisfies the constraints.??Optimization completed because the objective function is non-decreasing in ?feasible directions, to within the value of the optimality tolerance,?and constraints are satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization completed: The relative first-order optimality measure, 8.420618e-08,?is less than options.OptimalityTolerance = 1.000000e-06, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+Elapsed time is 1107.394449 seconds.
+Finished minimization.
+
+Fifth Trial:
+
+lb = [1, 1, 1, 1, 1, 1, 1];
+ub = [2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi, 2*pi];
+
+x =
+    6.2832    6.2832    6.2832    6.2832    6.2832    1.0000    6.2832
+fval =
+  -9.7452e+12
+exitflag =
+     2
+output = 
+  struct with fields:
+
+         iterations: 22
+          funcCount: 212
+    constrviolation: 0
+           stepsize: 6.1093e-10
+          algorithm: 'interior-point'
+      firstorderopt: 2.7583e+15
+       cgiterations: 44
+            message: '?Local minimum possible. Constraints satisfied.??fmincon stopped because the size of the current step is less than?the value of the step size tolerance and constraints are ?satisfied to within the value of the constraint tolerance.??<stopping criteria details>??Optimization stopped because the relative changes in all elements of x are?less than options.StepTolerance = 1.000000e-10, and the relative maximum constraint?violation, 0.000000e+00, is less than options.ConstraintTolerance = 1.000000e-06.??'
+Elapsed time is 4262.193669 seconds.
+Finished minimization.
