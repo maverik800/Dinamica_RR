@@ -22,5 +22,6 @@ disp('f = -S^T*W*S ='); disp(f);
 % Testing the Ker of the Gramian
 ker = rank(null(G));
 disp('The Ker of the Gramian is : '); disp(ker);
+disp('The last two singular values are: '); disp(S(5)); disp(S(end));
 
 end
